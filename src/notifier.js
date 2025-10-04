@@ -1,5 +1,9 @@
 export function sendNotification(payload) {
-  if (!payload || !payload.task_id) {
+  if (!payload || typeof payload !== "object") {
+    throw new Error("Invalid payload: must be an object");
+  }
+
+  if (!payload.task_id) {
     throw new Error("Invalid payload: task_id is required");
   }
 
